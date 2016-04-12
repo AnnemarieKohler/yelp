@@ -9,7 +9,12 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.create(restaurant_params)
-    redirect_to '/restaurants'
+    if @restaurant.save
+      redirect_to '/restaurants'
+    else
+      render 'new'
+      flash.now[:error] = "error"
+    end
   end
 
   def restaurant_params
