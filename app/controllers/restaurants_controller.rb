@@ -14,10 +14,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def restaurant_params
-    params.require(:restaurant).permit(:name)
-  end
-
   def show
     @restaurant = Restaurant.find(params[:id])
   end
@@ -57,5 +53,8 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :image)
+  end
 
 end

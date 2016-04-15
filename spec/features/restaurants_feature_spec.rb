@@ -106,4 +106,16 @@ feature 'restaurants' do
       expect(page).to have_content 'You cannot delete this restaurant'
     end
   end
+
+  context 'Images' do
+    before { sign_up }
+
+    scenario 'upload' do
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'name'
+      attach_file 'Cat Pic', './spec/features/fixtures/files/testing_cat.jpg'
+      click_button 'Create Restaurant'
+    end
+  end
+
 end
